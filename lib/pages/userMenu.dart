@@ -16,6 +16,7 @@ class UserMenu extends StatelessWidget {
       ),
       child: IconButton(
         icon: const Icon(Icons.person),
+        splashRadius: 1,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) => const UsersPage()));
         },

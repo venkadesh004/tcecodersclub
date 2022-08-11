@@ -48,6 +48,7 @@ class _MainPageState extends State<MainPage> {
         onTap: (index) => setState(() {
           currentIndex = index;
         }),
+        elevation: 0,
         backgroundColor: Colors.white,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black45,
