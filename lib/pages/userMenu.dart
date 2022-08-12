@@ -11,7 +11,7 @@ class UserMenu extends StatelessWidget {
       width: 50,
       height: 50,
       decoration: BoxDecoration(
-          color: Colors.grey,
+          color: const Color.fromRGBO(217, 217, 217, 0.8),
           borderRadius: BorderRadius.circular(50)
       ),
       child: IconButton(

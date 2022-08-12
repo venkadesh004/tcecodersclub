@@ -22,10 +22,15 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const <Widget>[
-              UserMenu(),
-              UserWelcome(),
-              Chats(),
+            children: <Widget>[
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  UserMenu(),
+                  UserWelcome()
+                ],
+              ),
+              const Chats(),
             ],
           ),
         ),
@@ -44,26 +49,29 @@ class UserWelcome extends StatefulWidget {
 class _UserWelcomeState extends State<UserWelcome> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget> [
-        const Text(
-          "Good Morning",
-          style: TextStyle(
-            fontSize: 20,
-            fontFamily: "Poppins"
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(top: 5, bottom: 20),
-          child: const Text(
-            "Coders",
+    return Container(
+      height: 50,
+      margin: const EdgeInsets.only(left: 10, bottom: 10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const <Widget> [
+          Text(
+            "Good Morning",
             style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold
+              fontSize: 15,
+              fontFamily: "Poppins"
             ),
           ),
-        )
-      ],
+          Text(
+            "Coders",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -117,12 +125,12 @@ class _ChatsState extends State<Chats> {
     }
 
     return Container(
-      padding: const EdgeInsets.only(right: 10, left: 10),
-      width: 350,
+      padding: const EdgeInsets.only(right: 32, left: 10),
       child: Column(
         children: <Widget>[
           Container(
             decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(200)),
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(
@@ -138,15 +146,16 @@ class _ChatsState extends State<Chats> {
                       spreadRadius: 0
                   )
                 ],
-                borderRadius: BorderRadius.all(Radius.circular(50))
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Container(
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(100))
                   ),
                   width: 130,
+                  height: 45,
                   child: ElevatedButton(
                       onPressed: () {
                         setState(() {
@@ -172,6 +181,7 @@ class _ChatsState extends State<Chats> {
                   ),
                 ),
                 Container(
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(100))
                   ),
@@ -201,6 +211,7 @@ class _ChatsState extends State<Chats> {
                   ),
                 ),
                 Container(
+                  height: 45,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(100))
                   ),

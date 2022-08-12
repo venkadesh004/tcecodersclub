@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:tcecodersclub/pages/homePage.dart';
 import 'package:tcecodersclub/pages/institutionPage.dart';
 import 'package:tcecodersclub/pages/chatPage.dart';
 import 'package:tcecodersclub/pages/feedPage.dart';
 import 'package:tcecodersclub/pages/codePage.dart';
+import 'package:tcecodersclub/constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentIndex = 0;
 
   final screens = const [
     HomePage(),
