@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/introPage.dart';
 import 'package:tcecodersclub/pages/homePage.dart';
 import 'package:tcecodersclub/pages/institutionPage.dart';
 import 'package:tcecodersclub/pages/chatPage.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MainPage(),
+      home: IntroPage(),
     );
   }
 }

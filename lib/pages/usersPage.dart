@@ -12,6 +12,9 @@ class UsersPage extends StatefulWidget {
 
 class _UsersPageState extends State<UsersPage> {
 
+  static const double leftHeadingColumnSize = 14;
+  static const double rightDataColumnSize = 12;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +69,7 @@ class _UsersPageState extends State<UsersPage> {
                             "Name",
                             textAlign: TextAlign.start,
                             style: TextStyle(
-                              fontSize: 17,
+                              fontSize: leftHeadingColumnSize,
                               fontWeight: FontWeight.bold
                             ),
                           ),
@@ -77,7 +80,7 @@ class _UsersPageState extends State<UsersPage> {
                             userName,
                             textAlign: TextAlign.start,
                             style: const TextStyle(
-                              fontSize: 17,
+                              fontSize: rightDataColumnSize,
                               fontWeight: FontWeight.normal
                             ),
                           ),
@@ -94,7 +97,7 @@ class _UsersPageState extends State<UsersPage> {
                               "Bio",
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontSize: 17,
+                                  fontSize: leftHeadingColumnSize,
                                   fontWeight: FontWeight.bold
                               ),
                             ),
@@ -105,7 +108,152 @@ class _UsersPageState extends State<UsersPage> {
                               bio,
                               textAlign: TextAlign.start,
                               style: const TextStyle(
-                                  fontSize: 17,
+                                  fontSize: rightDataColumnSize,
+                                  fontWeight: FontWeight.normal
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Email",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: leftHeadingColumnSize,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 110,
+                            child: Text(
+                              email,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  fontSize: rightDataColumnSize,
+                                  fontWeight: FontWeight.normal
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Full Name",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: leftHeadingColumnSize,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 110,
+                            child: Text(
+                              fullName,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  fontSize: rightDataColumnSize,
+                                  fontWeight: FontWeight.normal
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Department",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: leftHeadingColumnSize,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 110,
+                            child: Text(
+                              department,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  fontSize: rightDataColumnSize,
+                                  fontWeight: FontWeight.normal
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Year",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: leftHeadingColumnSize,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 110,
+                            child: Text(
+                              year,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  fontSize: rightDataColumnSize,
+                                  fontWeight: FontWeight.normal
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: const Text(
+                              "Register Number",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: leftHeadingColumnSize,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 110,
+                            child: Text(
+                              regNo,
+                              textAlign: TextAlign.start,
+                              style: const TextStyle(
+                                  fontSize: rightDataColumnSize,
                                   fontWeight: FontWeight.normal
                               ),
                             ),

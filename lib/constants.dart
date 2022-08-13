@@ -1,5 +1,10 @@
 var userName = "S Venkadesh";
 var profileId = 1;
 var bio = "1st year CSE, Interested in physics and computerscience";
+var email = 'venkadeshdeveloper@gmail.com';
+var fullName = 'S Venkadesh';
+var regNo = '21C114';
+var department = 'CSE';
+var year = 'II';
 var pinAccess = true;
 var currentIndex = 0;

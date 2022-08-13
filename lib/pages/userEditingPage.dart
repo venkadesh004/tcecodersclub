@@ -12,6 +12,14 @@ class _UserEditPageState extends State<UserEditPage> {
 
   TextEditingController _newName = new TextEditingController();
   TextEditingController _bio = new TextEditingController();
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _fullName = new TextEditingController();
+  String _department = department;
+  String _year = year;
+  TextEditingController _regNo = new TextEditingController();
+
+  List<String> departments = ['CSE', 'IT', 'MECHANICAL', 'ECE', 'CSBS', "EEE", 'CIVIL', 'MECHATRONICS', 'ARCHITECTURE', 'DATA SCIENCE'];
+  List<String> years = ['I', 'II', 'III', 'IV'];
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +40,28 @@ class _UserEditPageState extends State<UserEditPage> {
         actions: [
           TextButton(
               onPressed: () {
-                print(_newName.text);
-                print(_bio.text);
+                // print(_newName.text);
+                // print(_bio.text);
                 if (_newName.text != '') {
                   userName = _newName.text;
                 }
                 if (_bio.text != '') {
                   bio = _bio.text;
+                }
+                if (_email.text != '') {
+                  email = _email.text;
+                }
+                if (_fullName.text != '') {
+                  fullName = _fullName.text;
+                }
+                if (_department != '') {
+                  department = _department;
+                }
+                if (_year != '') {
+                  year = _year;
+                }
+                if (_regNo.text != '') {
+                  regNo = _regNo.text;
                 }
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const UsersPage()));
               },
@@ -79,12 +102,81 @@ class _UserEditPageState extends State<UserEditPage> {
                           ),
                         ),
                       ),
-                      TextFormField(
-                        controller: _bio,
-                        decoration: const InputDecoration(
-                            border: UnderlineInputBorder(),
-                            labelText: 'Bio'
-                        )
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 30),
+                        child: TextFormField(
+                          controller: _bio,
+                          decoration: const InputDecoration(
+                              border: UnderlineInputBorder(),
+                              labelText: 'Bio'
+                          )
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 30),
+                        child: TextFormField(
+                            controller: _email,
+                            decoration: const InputDecoration(
+                                border: UnderlineInputBorder(),
+                                labelText: 'Email'
+                            )
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 30),
+                        child: TextFormField(
+                            controller: _fullName,
+                            decoration: const InputDecoration(
+                                border: UnderlineInputBorder(),
+                                labelText: 'Full Name'
+                            )
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 30),
+                        child: DropdownButton<String>(
+                          value: _department,
+                          elevation: 0,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _department = newValue!;
+                            });
+                          },
+                          items: departments.map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 30),
+                        child: DropdownButton<String>(
+                          value: _year,
+                          elevation: 0,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _year = newValue!;
+                            });
+                          },
+                          items: years.map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(bottom: 30),
+                        child: TextFormField(
+                            controller: _regNo,
+                            decoration: const InputDecoration(
+                                border: UnderlineInputBorder(),
+                                labelText: 'Register number'
+                            )
+                        ),
                       ),
                     ],
                   ),
