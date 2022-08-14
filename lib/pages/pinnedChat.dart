@@ -27,6 +27,7 @@ class _PinnedChatState extends State<PinnedChat> {
                   likeCount: 30,
                   thumbsUpCount: 20,
                   thumbsDownCount: 15,
+                  comment: 1,
                 ),
                 ChatBox(
                   profileID: 1,
@@ -36,6 +37,7 @@ class _PinnedChatState extends State<PinnedChat> {
                   likeCount: 40,
                   thumbsUpCount: 24,
                   thumbsDownCount: 19,
+                  comment: 1,
                 ),
                 ChatBox(
                   profileID: 1,
@@ -45,6 +47,7 @@ class _PinnedChatState extends State<PinnedChat> {
                   likeCount: 35,
                   thumbsUpCount: 36,
                   thumbsDownCount: 6,
+                  comment: 1,
                 ),
               ],
             )

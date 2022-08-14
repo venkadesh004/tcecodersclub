@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/pages/commentBox.dart';
 
 class ChatBox extends StatefulWidget {
   ChatBox({Key? key,
@@ -8,7 +9,8 @@ class ChatBox extends StatefulWidget {
     var chatData,
     var likeCount,
     var thumbsUpCount,
-    var thumbsDownCount
+    var thumbsDownCount,
+    var comment
   }) {
     this.profileID = profileID;
     this.userName = userName;
@@ -17,8 +19,10 @@ class ChatBox extends StatefulWidget {
     this.likeCount = likeCount;
     this.thumbsUpCount = thumbsUpCount;
     this.thumbsDownCount = thumbsDownCount;
+    this.comment = comment;
   }
 
+  var comment = 1;
   var profileID = 0;
   var userName = '';
   var bio = '';
@@ -101,7 +105,7 @@ class _ChatBoxState extends State<ChatBox> {
                       Row(
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(right: 6),
+                            margin: const EdgeInsets.only(right: 1),
                             child: IconButton(
                               splashRadius: 1,
                               icon: Icon(
@@ -136,7 +140,7 @@ class _ChatBoxState extends State<ChatBox> {
                       Row(
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(right: 6),
+                            margin: const EdgeInsets.only(right: 1),
                             child: IconButton(
                               splashRadius: 1,
                               icon: Icon(
@@ -177,7 +181,7 @@ class _ChatBoxState extends State<ChatBox> {
                       Row(
                         children: [
                           Container(
-                            margin: const EdgeInsets.only(right: 6),
+                            margin: const EdgeInsets.only(right: 1),
                             child: IconButton(
                               splashRadius: 1,
                               icon: Icon(
@@ -215,12 +219,37 @@ class _ChatBoxState extends State<ChatBox> {
                           )
                         ],
                       ),
+                      Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 1),
+                            child: IconButton(
+                              splashRadius: 1,
+                              icon: const Icon(
+                                Icons.comment_outlined,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                if (widget.comment > 0) {
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CommentPage()));
+                                }
+                              },
+                            ),
+                          ),
+                          Text(
+                            widget.comment.toString(),
+                            style: const TextStyle(
+                                fontSize: 10
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

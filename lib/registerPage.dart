@@ -10,6 +10,42 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const LoginPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 0.75);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const OTPValidation(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.75, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
 class _RegisterPageState extends State<RegisterPage> {
 
   TextEditingController _userNameController = new TextEditingController();
@@ -24,6 +60,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String dropdownDepartment = 'DEPARTMENT';
   String dropdownYear = 'YEAR';
+
+  var eyeOpen1 = true;
+  var eye1Color = Colors.black;
+  var eye1Icon = Icons.remove_red_eye;
+
+  var eyeOpen2 = true;
+  var eye2Color = Colors.black;
+  var eye2Icon = Icons.remove_red_eye;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+                Navigator.of(context).push(_createRoute());
               },
               child: const Text(
                 "Login"
@@ -152,22 +196,78 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             Container(
               padding: const EdgeInsets.only(top: 0, bottom: 20, left: 40, right: 40),
-              child: TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Enter a Password'
-                ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 130,
+                    height: 50,
+                    child: TextFormField(
+                      obscureText: eyeOpen1,
+                      controller: _passwordController,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Enter a Password'
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (eyeOpen1 == true) {
+                            eyeOpen1 = false;
+                            eye1Icon = Icons.remove_red_eye_outlined;
+                            eye1Color = Colors.blue;
+                          } else {
+                            eyeOpen1 = true;
+                            eye1Icon = Icons.remove_red_eye;
+                            eye1Color = Colors.black;
+                          }
+                        });
+                      },
+                      icon: Icon(
+                        eye1Icon,
+                        color: eye1Color,
+                      )
+                  )
+                ],
               ),
             ),
             Container(
               padding: const EdgeInsets.only(top: 0, bottom: 20, left: 40, right: 40),
-              child: TextFormField(
-                controller: _confirmPasswordController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Confirm Password'
-                ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width - 130,
+                    height: 50,
+                    child: TextFormField(
+                      obscureText: eyeOpen2,
+                      controller: _confirmPasswordController,
+                      decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Enter a Password'
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (eyeOpen2 == true) {
+                            eyeOpen2 = false;
+                            eye2Icon = Icons.remove_red_eye_outlined;
+                            eye2Color = Colors.blue;
+                          } else {
+                            eyeOpen2 = true;
+                            eye2Icon = Icons.remove_red_eye;
+                            eye2Color = Colors.black;
+                          }
+                        });
+                      },
+                      icon: Icon(
+                        eye2Icon,
+                        color: eye2Color,
+                      )
+                  )
+                ],
               ),
             ),
             Container(
@@ -195,7 +295,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     } else {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const OTPValidation()));
+                      Navigator.of(context).push(_createRoute2());
                     }
                   },
                   child: const Text(

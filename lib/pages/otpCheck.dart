@@ -8,6 +8,24 @@ class OTPValidation extends StatefulWidget {
   State<OTPValidation> createState() => _OTPValidationState();
 }
 
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const MainPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
 class _OTPValidationState extends State<OTPValidation> {
   @override
   Widget build(BuildContext context) {
@@ -112,7 +130,7 @@ class _OTPGetterState extends State<OTPGetter> {
               ),
                 onPressed: () {
                   if (_fieldOne.text == '2' && _fieldTwo.text == '0' && _fieldThree.text == '0' && _fieldFour.text == '4') {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
+                    Navigator.of(context).push(_createRoute());
                   }
                 },
                 child: const Text(
@@ -128,6 +146,8 @@ class _OTPGetterState extends State<OTPGetter> {
     );
   }
 }
+
+var count = 3;
 
 class OtpInput extends StatelessWidget {
   final TextEditingController controller;
@@ -152,7 +172,8 @@ class OtpInput extends StatelessWidget {
             counterText: '',
             hintStyle: TextStyle(color: Colors.black, fontSize: 20.0)),
         onChanged: (value) {
-          if (value.length == 1) {
+          if (value.length == 1 && count > 0) {
+            count -= 1;
             FocusScope.of(context).nextFocus();
           }
         },

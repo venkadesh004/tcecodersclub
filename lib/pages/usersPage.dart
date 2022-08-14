@@ -10,6 +10,42 @@ class UsersPage extends StatefulWidget {
   State<UsersPage> createState() => _UsersPageState();
 }
 
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const UserEditPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const MainPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, -1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
 class _UsersPageState extends State<UsersPage> {
 
   static const double leftHeadingColumnSize = 14;
@@ -28,14 +64,14 @@ class _UsersPageState extends State<UsersPage> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
+            Navigator.of(context).push(_createRoute2());
           },
         ),
         actions: [
           IconButton(
               splashRadius: 1,
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const UserEditPage()));
+                Navigator.of(context).push(_createRoute());
               },
               icon: const Icon(
                 Icons.edit_outlined,

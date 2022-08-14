@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcecodersclub/introPage.dart';
+import 'package:tcecodersclub/pages/commentBox.dart';
 import 'package:tcecodersclub/pages/homePage.dart';
 import 'package:tcecodersclub/pages/institutionPage.dart';
 import 'package:tcecodersclub/pages/chatPage.dart';
@@ -55,7 +56,7 @@ class _MainPageState extends State<MainPage> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
-            label: 'home',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.school),
@@ -63,7 +64,7 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.code),
-              label: 'Code'
+              label: 'Events'
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.feed),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tcecodersclub/pages/chatBox.dart';
+import 'package:tcecodersclub/pages/commentBox.dart';
 
 class CommunityChat extends StatefulWidget {
   const CommunityChat({Key? key}) : super(key: key);
@@ -23,10 +24,11 @@ class _CommunityChatState extends State<CommunityChat> {
                 profileID: 1,
                 userName: 'S Venkadesh',
                 bio: '2nd year CSE',
-                chatData: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                chatData: 'Lorem 😂 Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                 likeCount: 30,
                 thumbsUpCount: 20,
                 thumbsDownCount: 15,
+                comment: 1,
               ),
               ChatBox(
                 profileID: 1,
@@ -36,6 +38,7 @@ class _CommunityChatState extends State<CommunityChat> {
                 likeCount: 40,
                 thumbsUpCount: 24,
                 thumbsDownCount: 19,
+                comment: 0,
               ),
               ChatBox(
                 profileID: 1,
@@ -45,6 +48,7 @@ class _CommunityChatState extends State<CommunityChat> {
                 likeCount: 35,
                 thumbsUpCount: 36,
                 thumbsDownCount: 6,
+                comment: 1,
               ),
             ],
           )

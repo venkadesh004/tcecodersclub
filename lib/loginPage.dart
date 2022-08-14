@@ -9,9 +9,50 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const MainPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 0.75);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+Route _createRoute2() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const RegisterPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 0.75);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _userName = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
+  var eyeOpen1 = true;
+  var eye1Color = Colors.black;
+  var eye1Icon = Icons.remove_red_eye;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
         actions: [
           TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
+                Navigator.of(context).push(_createRoute2());
               },
               child: const Text(
                 "Register",
@@ -72,13 +113,41 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 20),
-                      child: TextFormField(
-                        controller: _password,
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Password'
-                        ),
+                      padding: const EdgeInsets.only(top: 30, bottom: 20, left: 0, right: 0),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 130,
+                            height: 70,
+                            child: TextFormField(
+                              obscureText: eyeOpen1,
+                              controller: _password,
+                              decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: 'Enter a Password'
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (eyeOpen1 == true) {
+                                    eyeOpen1 = false;
+                                    eye1Icon = Icons.remove_red_eye_outlined;
+                                    eye1Color = Colors.blue;
+                                  } else {
+                                    eyeOpen1 = true;
+                                    eye1Icon = Icons.remove_red_eye;
+                                    eye1Color = Colors.black;
+                                  }
+                                });
+                              },
+                              icon: Icon(
+                                eye1Icon,
+                                color: eye1Color,
+                              )
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -93,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_userName.text == "venkadesh") {
                         if (_password.text == "venkadesh") {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MainPage()));
+                          Navigator.of(context).push(_createRoute());
                         } else {
                           final snackBar = SnackBar(
                               content: const Text('Invalid Password'),
