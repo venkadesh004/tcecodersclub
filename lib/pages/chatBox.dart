@@ -1,6 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:tcecodersclub/pages/commentBox.dart';
 
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const CommentPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(-0.75, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
 class ChatBox extends StatefulWidget {
   ChatBox({Key? key,
     var profileID,
@@ -231,7 +249,7 @@ class _ChatBoxState extends State<ChatBox> {
                               ),
                               onPressed: () {
                                 if (widget.comment > 0) {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CommentPage()));
+                                  Navigator.of(context).push(_createRoute());
                                 }
                               },
                             ),

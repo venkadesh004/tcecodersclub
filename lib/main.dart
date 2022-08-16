@@ -4,7 +4,7 @@ import 'package:tcecodersclub/pages/commentBox.dart';
 import 'package:tcecodersclub/pages/homePage.dart';
 import 'package:tcecodersclub/pages/institutionPage.dart';
 import 'package:tcecodersclub/pages/chatPage.dart';
-import 'package:tcecodersclub/pages/feedPage.dart';
+import 'package:tcecodersclub/pages/calenderPage.dart';
 import 'package:tcecodersclub/pages/codePage.dart';
 import 'package:tcecodersclub/constants.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: IntroPage(),
+      home: MainPage(),
     );
   }
 }
@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
     HomePage(),
     InstitutionPage(),
     CodePage(),
-    FeedPage(),
+    CalenderPage(),
     ChatPage(),
   ];
 
@@ -67,8 +67,8 @@ class _MainPageState extends State<MainPage> {
               label: 'Events'
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.feed),
-              label: 'Feed'
+              icon: Icon(Icons.calendar_month),
+              label: 'Calender'
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.comment),
