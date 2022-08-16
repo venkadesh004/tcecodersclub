@@ -39,14 +39,14 @@ class CalenderContainer extends StatefulWidget {
 
 class _CalenderContainerState extends State<CalenderContainer> {
 
-  var dates = List<String>.generate(31, (index) => '$index');
-  var month = 'Jan';
-  var events = [[], [], ['January Monthly Contest'], [], [], [], [], [], [], ['Web development Contest'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['Web seminar'], [], [], [], [], []];
-  var eventExistence = [false, false, true, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false];
-
   @override
   Widget build(BuildContext context) {
+    var dates = List<String>.generate(31, (index) => '$index');
+    var month = 'Jan';
+    var events = [[], [], ['January Monthly Contest'], [], [], [], [], [], [], ['Web development Contest'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['Web seminar'], [], [], [], [], []];
+    var eventExistence = [false, false, true, false, false, false, false, false, false, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, false, false, false, false, false];
     dates.removeAt(0);
+    print(dates);
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.only(right: 10, bottom: 200),
@@ -217,28 +217,26 @@ class _DateBoxState extends State<DateBox> {
                 ),
                 Container(
                     margin: const EdgeInsets.only(left: 50),
-                    child: Expanded(
-                      child: Container(
-                        height: 100,
-                        width: MediaQuery.of(context).size.width - 170,
-                        child: Center(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: widget.eventList.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text(
-                                    widget.eventList[index],
-                                    textAlign: TextAlign.start,
-                                    style: const TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400
-                                    ),
+                    child: SizedBox(
+                      height: 100,
+                      width: MediaQuery.of(context).size.width - 170,
+                      child: Center(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: widget.eventList.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(
+                                  widget.eventList[index],
+                                  textAlign: TextAlign.start,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400
                                   ),
-                                );
-                              }
-                          ),
+                                ),
+                              );
+                            }
                         ),
                       ),
                     )
