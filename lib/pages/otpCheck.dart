@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/constants.dart';
 import 'package:tcecodersclub/main.dart';
 
 class OTPValidation extends StatefulWidget {
@@ -100,9 +101,9 @@ class _OTPGetterState extends State<OTPGetter> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(top: 20),
-                    child: const Text(
-                      "venkadeshdeveloper@gmail.com",
-                      style: TextStyle(
+                    child: Text(
+                      email,
+                      style: const TextStyle(
                         fontSize: 15,
                         color: Colors.black
                       ),
@@ -130,6 +131,7 @@ class _OTPGetterState extends State<OTPGetter> {
               ),
                 onPressed: () {
                   if (_fieldOne.text == '2' && _fieldTwo.text == '0' && _fieldThree.text == '0' && _fieldFour.text == '4') {
+                    currentIndex = 0;
                     Navigator.of(context).push(_createRoute());
                   }
                 },

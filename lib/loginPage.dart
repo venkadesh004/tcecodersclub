@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/constants.dart';
 import 'package:tcecodersclub/main.dart';
 import 'package:tcecodersclub/registerPage.dart';
 
@@ -162,6 +163,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       if (_userName.text == "venkadesh") {
                         if (_password.text == "venkadesh") {
+                          currentIndex = 0;
                           Navigator.of(context).push(_createRoute());
                         } else {
                           final snackBar = SnackBar(

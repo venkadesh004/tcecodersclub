@@ -300,6 +300,20 @@ class _UsersPageState extends State<UsersPage> {
                   ],
                 ),
               ),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Logout",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500
+                    ),
+                  )
+              ),
               Container(
                 margin: const EdgeInsets.only(top: 100),
                 child: TextButton(
