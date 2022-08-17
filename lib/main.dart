@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:tcecodersclub/introPage.dart';
 import 'package:tcecodersclub/pages/commentBox.dart';
@@ -6,6 +8,7 @@ import 'package:tcecodersclub/pages/institutionPage.dart';
 import 'package:tcecodersclub/pages/chatPage.dart';
 import 'package:tcecodersclub/pages/calenderPage.dart';
 import 'package:tcecodersclub/pages/codePage.dart';
+import 'package:tcecodersclub/pages/loader.dart';
 import 'package:tcecodersclub/constants.dart';
 
 void main() {

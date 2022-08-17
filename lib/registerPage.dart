@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tcecodersclub/loginPage.dart';
-import 'package:tcecodersclub/main.dart';
 import 'package:tcecodersclub/pages/otpCheck.dart';
+import 'package:tcecodersclub/constants.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -56,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _confirmPasswordController = new TextEditingController();
 
   List<String> departments = ['DEPARTMENT', 'CSE', 'IT', 'MECHANICAL', 'ECE', 'CSBS', "EEE", 'CIVIL', 'MECHATRONICS', 'ARCHITECTURE', 'DATA SCIENCE'];
-  List<String> year = ['YEAR', 'I', 'II', 'III', 'IV'];
+  List<String> years = ['YEAR', 'I', 'II', 'III', 'IV'];
 
   String dropdownDepartment = 'DEPARTMENT';
   String dropdownYear = 'YEAR';
@@ -176,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       dropdownYear = newValue!;
                     });
                   },
-                  items: year.map<DropdownMenuItem<String>>((String value) {
+                  items: years.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
                       child: Text(value),
@@ -295,6 +295,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     } else {
+                      userName = _userNameController.text;
+                      fullName = _fullNameController.text;
+                      email = _emailController.text;
+                      department = dropdownDepartment;
+                      year = dropdownYear;
                       Navigator.of(context).push(_createRoute2());
                     }
                   },

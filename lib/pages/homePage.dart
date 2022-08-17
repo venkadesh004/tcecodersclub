@@ -20,18 +20,20 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         margin: const EdgeInsets.only(top: 20, left: 20),
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  UserMenu(),
-                  UserWelcome()
-                ],
-              ),
-              const Chats(),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    UserMenu(),
+                    UserWelcome()
+                  ],
+                ),
+                const Chats(),
+              ],
+            ),
           ),
         ),
       ),

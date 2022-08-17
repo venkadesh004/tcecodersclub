@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/constants.dart';
+import 'package:tcecodersclub/pages/loader.dart';
 
 class CommentPage extends StatefulWidget {
   const CommentPage({Key? key}) : super(key: key);
@@ -32,7 +34,23 @@ class _CommentPageState extends State<CommentPage> {
           },
         ),
       ),
-      body: SingleChildScrollView(
+      body: const CommentContainer(),
+    );
+  }
+}
+
+class CommentContainer extends StatefulWidget {
+  const CommentContainer({Key? key}) : super(key: key);
+
+  @override
+  State<CommentContainer> createState() => _CommentContainerState();
+}
+
+class _CommentContainerState extends State<CommentContainer> {
+  @override
+  Widget build(BuildContext context) {
+    if (commentLoaded) {
+      return SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
@@ -83,7 +101,7 @@ class _CommentPageState extends State<CommentPage> {
                     width: MediaQuery.of(context).size.width - 60,
                     child: const TextField(
                       decoration: InputDecoration(
-                        hintText: 'Add Comment'
+                          hintText: 'Add Comment'
                       ),
                     ),
                   ),
@@ -93,7 +111,7 @@ class _CommentPageState extends State<CommentPage> {
                     child: IconButton(
                         onPressed: () {},
                         icon: const Icon(
-                          Icons.send
+                            Icons.send
                         )
                     ),
                   )
@@ -102,8 +120,9 @@ class _CommentPageState extends State<CommentPage> {
             )
           ],
         ),
-      ),
-    );
+      );
+    }
+    return const Loader();
   }
 }
 

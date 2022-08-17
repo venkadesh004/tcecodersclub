@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/constants.dart';
+import 'package:tcecodersclub/pages/loader.dart';
 import 'package:tcecodersclub/pages/userMenu.dart';
 
 class CalenderPage extends StatefulWidget {
@@ -20,7 +22,7 @@ class _CalenderPageState extends State<CalenderPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const <Widget>[
                 UserMenu(),
-                CalenderContainer()
+                CalenderBox()
               ],
             ),
           ),
@@ -29,6 +31,24 @@ class _CalenderPageState extends State<CalenderPage> {
     );
   }
 }
+
+class CalenderBox extends StatefulWidget {
+  const CalenderBox({Key? key}) : super(key: key);
+
+  @override
+  State<CalenderBox> createState() => _CalenderBoxState();
+}
+
+class _CalenderBoxState extends State<CalenderBox> {
+  @override
+  Widget build(BuildContext context) {
+    if (calenderLoaded) {
+      return CalenderContainer();
+    }
+    return const Loader();
+  }
+}
+
 
 class CalenderContainer extends StatefulWidget {
   const CalenderContainer({Key? key}) : super(key: key);

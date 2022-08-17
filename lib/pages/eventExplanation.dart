@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/constants.dart';
+import 'package:tcecodersclub/pages/loader.dart';
 
 class EventExplain extends StatefulWidget {
   EventExplain({Key? key, this.eventHeading, this.imageLink, this.eventDes, this.eventLink}) : super(key: key);
@@ -29,7 +31,33 @@ class _EventExplainState extends State<EventExplain> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
+      body: EventDetails(eventHeading: widget.eventHeading, imageLink: widget.imageLink, eventDes: widget.eventDes, eventLink: widget.eventLink,),
+    );
+  }
+}
+
+class EventDetails extends StatefulWidget {
+  EventDetails({Key? key,
+    this.eventHeading,
+    this.imageLink,
+    this.eventDes,
+    this.eventLink
+  }) : super(key: key);
+
+  final eventHeading;
+  final imageLink;
+  final eventDes;
+  final eventLink;
+
+  @override
+  State<EventDetails> createState() => _EventDetailsState();
+}
+
+class _EventDetailsState extends State<EventDetails> {
+  @override
+  Widget build(BuildContext context) {
+    if (eventExplain) {
+      return Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.only(right: 20),
@@ -42,10 +70,12 @@ class _EventExplainState extends State<EventExplain> {
             EventLink(eventLink: widget.eventLink,)
           ],
         ),
-      ),
-    );
+      );
+    }
+    return const Loader();
   }
 }
+
 
 class EventHeading extends StatefulWidget {
   const EventHeading({Key? key, this.eventHeading}) : super(key: key);

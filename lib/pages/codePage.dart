@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tcecodersclub/constants.dart';
 import 'package:tcecodersclub/pages/eventExplanation.dart';
+import 'package:tcecodersclub/pages/loader.dart';
 import 'package:tcecodersclub/pages/userMenu.dart';
 
 Route _createRoute(String eventName, String eventImage, String eventDes, String eventLink) {
@@ -67,18 +69,21 @@ class EventBox extends StatefulWidget {
 class _EventBoxState extends State<EventBox> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.only(bottom: 20),
-      child: Column(
-        children: [
-          EventMiniBox(eventName: 'January Monthly Contest', eventDes: 'Lets join the January Monthly Contest of Coders Club', eventImage: '',),
-          EventMiniBox(eventName: 'Web development Contest', eventDes: 'CSE Coders club is now conducting a mega event in web technologies.', eventImage: 'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/code-512.png',),
-          EventMiniBox(eventName: 'February Monthly Contest', eventDes: 'Lets join the January Monthly Contest of Coders Club', eventImage: '',),
-        ]
-      ),
-    );
+    if (eventsLoaded) {
+      return Container(
+        color: Colors.transparent,
+        width: MediaQuery.of(context).size.width,
+        margin: const EdgeInsets.only(bottom: 20),
+        child: Column(
+            children: [
+              EventMiniBox(eventName: 'January Monthly Contest', eventDes: 'Lets join the January Monthly Contest of Coders Club', eventImage: '',),
+              EventMiniBox(eventName: 'Web development Contest', eventDes: 'CSE Coders club is now conducting a mega event in web technologies.', eventImage: 'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/code-512.png',),
+              EventMiniBox(eventName: 'February Monthly Contest', eventDes: 'Lets join the January Monthly Contest of Coders Club', eventImage: '',),
+            ]
+        ),
+      );
+    }
+    return const Loader();
   }
 }
 
